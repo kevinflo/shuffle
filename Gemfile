@@ -29,6 +29,12 @@ gem 'pg', '0.17.1'
 gem 'httparty', '0.13.1'
 gem 'bootstrap-sass', '3.2.0.2'
 
+# shuffle-specific gems
+
+gem 'devise', '3.3.0'
+gem 'omniauth-meetup', '0.0.7'
+gem 'meetup_client', '0.0.6'
+
 group :production do
   gem 'rails_12factor', '0.0.2'
   gem 'unicorn', '4.8.3'

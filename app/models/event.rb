@@ -2,6 +2,10 @@ class Event < ActiveRecord::Base
   has_many :batches
   has_and_belongs_to_many :users
 
+  def switchify
+    
+  end
+
   # shield your eyes... the following is horrifying
   def batchify
     total = self.users.count

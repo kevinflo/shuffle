@@ -18,3 +18,4 @@ angular.module('sm.match', [
 .controller('MatchCtrl', function MatchCtrl($scope, $state, $stateParams, $rootScope) {
   $scope.match = $rootScope.match;
 });
+

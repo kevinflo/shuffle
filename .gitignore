@@ -28,3 +28,5 @@
 /config/unicorn_init.sh
 /.rufus-scheduler.lock
 /notes.rb
+
+bower_components

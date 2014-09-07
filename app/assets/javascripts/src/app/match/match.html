@@ -1,0 +1,17 @@
+<div id="match">
+  <div>Meet and Greet</div>
+
+  <div class="match-name">Find {{other.name}}</div>
+  <img class="match-image" ng-src="{{other.image}}"/>
+
+  <div class="match-actions">
+    <button type="button" class="btn btn-info btn-block match-info">Info</button>
+    <button type="button" class="btn btn-default btn-block match-message">Message</button>
+    <button type="button" class="btn btn-primary btn-block match-share">Share Contact</button>
+  </div>
+
+  <div class="match-timer">
+    <span>Next MeetupShuffle starts in </span>
+    <timer end-time="nextMatchTime">{{mminutes}}:{{sseconds}}</timer>
+  </div>
+</div>

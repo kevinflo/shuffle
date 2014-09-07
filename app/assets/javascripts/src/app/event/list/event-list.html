@@ -1,0 +1,7 @@
+<div id="event-list">
+  <h2>Your Previous Events</h2>
+  <ul>
+    <li ng-repeat="event in events" ui-sref="event.detail({eventid: event.id})">
+      <h4>{{event.name}}</h4>
+    </li>
+</div>

@@ -1,0 +1,10 @@
+<div id="event-detail">
+  <h3>{{event.name}}</h3>
+  <h4>You met with:</h4>
+  <ul>
+    <li ng-repeat="match in matches" ui-sref="match.detail({matchid: match.id})">
+      <div profile-image="match.pic"></div>
+      <h4 class="match-name">{{match.name}}</h4>
+      <h6 class="match-description">{{match.description}}</h6>
+    </li>
+</div>

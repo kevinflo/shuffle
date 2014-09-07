@@ -1,5 +1,6 @@
 angular.module('sm.match', [
-  'ui.router'
+  'ui.router',
+  'sm.match.info'
 ])
 
 .config(function config($stateProvider, $urlRouterProvider) {
@@ -10,6 +11,7 @@ angular.module('sm.match', [
       match: function($http, $stateParams) {
         return $http.get('/users/' + $stateParams.matchid + '.json')
         .then(function(user) {
+          user = user.data;
           return $http.get('/csearch/' + user.company + '.json')
           .then(function(data) {
             user.companyInfo = data.data;
@@ -31,5 +33,6 @@ angular.module('sm.match', [
 
 .controller('MatchCtrl', function MatchCtrl($scope, match) {
   $scope.match = match;
+  $scope.nextMatchTime = new Date((new Date()).getTime() + 1000*60*5);
 });
 

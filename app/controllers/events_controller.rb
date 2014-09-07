@@ -30,6 +30,9 @@ class EventsController < ApplicationController
   def mix
     if user_signed_in?
       @event = Event.find_or_create_by(params[:meetup_id])
+      if !current_user.in?(@event)
+        @event.users.push(current_user)
+      end
       respond_to do |format|
         format.json   { render :json => @event }
       end

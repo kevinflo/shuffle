@@ -6,15 +6,20 @@ class EventsController < ApplicationController
       end
       @dashboard = current_user.dashboard
       @ongoing_event = @dashboard["ongoing_event"]
-      # @ev_name = @ongoing_event["name"]
-      # @ev_url = @ongoing_event["url"]
-      # @ev_id = @ongoing_event["id"]
-      # @ev_headcount = @ongoing_event["headcount"]
-      # @ev_description = @ongoing_event["description"]
+      if @ongoing_event != nil
+        # @ev_name = @ongoing_event["name"]
+        # @ev_url = @ongoing_event["url"]
+        # @ev_id = @ongoing_event["id"]
+        # @ev_headcount = @ongoing_event["headcount"]
+        # @ev_description = @ongoing_event["description"]
 
-      respond_to do |format|
-        format.json   { render :json => @ongoing_event.to_json }
-        format.html
+        respond_to do |format|
+          format.json   { render :json => @ongoing_event.to_json }
+          format.html
+        end
+      else
+        flash[:error] = "Sorry, you don't have any ongoing meetup events at this time."
+        redirect_to root_path
       end
     else
       flash[:error] = "Sorry, you must be logged in to an account to access this page."

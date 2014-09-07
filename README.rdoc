@@ -1,3 +1,7 @@
-SHUFFLE (real name pending)
+NowShuffle
+------------------
+A randomizer for timed pairings of meetup attendes. Written during TechCrunch 2014's disrupt hackathon.
 
-A randomizer for timed pairings of meetup attendes.  Currently being written during TechCrunch 2014's disrupt hackathon.
+READ THIS CODE AT YOUR OWN PERIL.  It was fueled by sleep deprivation and hunger and fatigue and uncomfortable chairs and a very cold empty hangar and was written in a single night.  It is not good.  The app is not fully functional
+
+I'm still going to leave it on github because why not.

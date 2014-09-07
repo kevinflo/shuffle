@@ -12,7 +12,7 @@ angular.module('sm.event', [
     views: {
       "": {
         controller: 'EventCtrl',
-        templateUrl: 'event/event.html'
+        templateUrl: 'assets/src/app/event/event.html'
       }
     }
   });

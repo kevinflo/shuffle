@@ -9,7 +9,7 @@ angular.module('sm.match', [
     views: {
       "": {
         controller: 'MatchCtrl',
-        templateUrl: 'match/match.html'
+        templateUrl: 'assets/src/app/match/match.html'
       }
     }
   });

@@ -59,4 +59,5 @@ class EventsController < ApplicationController
     @event.batchify
     # redirect_to events_mix_path(@event.meetup_id)
   end
+
 end

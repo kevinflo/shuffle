@@ -10,7 +10,7 @@ class EventsController < ApplicationController
       end
       @dashboard = current_user.dashboard
       @ongoing_event = @dashboard["ongoing_event"]
-      # if @ongoing_event != nil
+      #if @ongoing_event != nil
         # @ev_name = @ongoing_event["name"]
         # @ev_url = @ongoing_event["url"]
         # @ev_id = @ongoing_event["id"]

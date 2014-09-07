@@ -24,8 +24,10 @@ angular.module('sm.event.list', [
 })
 
 .controller('EventListCtrl', function EventListCtrl($scope, $state, $stateParams, $rootScope, events) {
-  if (!angular.isArray(events)) {
+  if (!angular.isArray(events) && events !== "null") {
     events = [events];
+  } else if (events === "null") {
+    events = [];
   }
 
   $scope.events = events;

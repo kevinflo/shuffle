@@ -81,12 +81,4 @@ ActiveRecord::Schema.define(version: 20140907131507) do
   add_index "users", ["meetup_uid"], name: "index_users_on_meetup_uid", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token"
 
-  create_table "users_pairings", force: true do |t|
-    t.integer "user_id"
-    t.integer "pairing_id"
-  end
-
-  add_index "users_pairings", ["pairing_id"], name: "index_users_pairings_on_pairing_id"
-  add_index "users_pairings", ["user_id"], name: "index_users_pairings_on_user_id"
-
 end

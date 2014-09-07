@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   get 'events/show'
 
   root to: 'static_pages#home'
   match '/events'      => 'events#show',   via: :get
   match '/events/:meetup_id' => 'events#mix', via: :get, as: :events_mix
   match '/events/:meetup_id/batchify' => 'events#batchify', via: :get, as: :events_batchify
+  match '/users/:meetup_uid' => 'users#show', via: :get
 
   devise_for :users, :skip => [:registrations], :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 

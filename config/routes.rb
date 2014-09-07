@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   match '/csearch/:query' => 'users#csearch', via: :get, as: :csearch
   match '/users/update' => 'users#update', via: :post
+  match '/pairings' => 'users#pairings', via: :get
 
   # devise_scope :user do
   #   get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session

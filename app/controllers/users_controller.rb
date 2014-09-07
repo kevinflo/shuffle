@@ -27,6 +27,21 @@ class UsersController < ApplicationController
 
     respond_to do |format|
         format.json   { render :json => @user.as_json(:only => [:meetup_uid, :meetup_name, :meetup_image]) }
+    end
+  end
+
+  def pairings
+    @pairings = []
+    current_user.pairings.each do |p|
+      p.users.each do |u|
+        if u != current_user
+          @pairings << u.meetup_uid
+        end
       end
+    end
+
+    respond_to do |format|
+        format.json   { render :json => @pairings.to_json }
+    end
   end
 end

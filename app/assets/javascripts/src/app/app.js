@@ -14,6 +14,7 @@ angular.module('sm', [
 ])
 
 .config(function shuffleAppConfig($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.when('/', '/event/');
   $urlRouterProvider.otherwise('/');
 })
 

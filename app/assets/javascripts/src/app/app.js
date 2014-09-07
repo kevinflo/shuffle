@@ -26,12 +26,12 @@ angular.module('sm', [
 })
 
 .directive('profileImage', function(){
-    return function(scope, element, attrs){
-        attrs.$observe('profileImage', function(value) {
-            element.css({
-                'background-image': 'url(' + value +')',
-                'background-size' : 'cover'
-            });
-        });
-    };
+  return function(scope, element, attrs){
+    attrs.$observe('profileImage', function(value) {
+      element.css({
+        'background-image': 'url(' + value +')',
+        'background-size' : 'cover'
+      });
+    });
+  };
 });

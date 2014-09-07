@@ -9,7 +9,7 @@ angular.module('sm.event.detail', [
     views: {
       "": {
         controller: 'EventDetailCtrl',
-        templateUrl: 'event/detail/event-detail.html'
+        templateUrl: 'assets/src/app/event/detail/event-detail.html'
       }
     }
   });

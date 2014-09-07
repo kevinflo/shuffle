@@ -39,7 +39,11 @@ class EventsController < ApplicationController
 
       @pairings = []
       @event.batches.last.pairings.each do |p|
-        @pairings << [p.users.first.meetup_uid, p.users.second.meetup_uid]
+        if p.users.count == 1
+          @pairings << [p.users.first.meetup_uid]
+        else
+          @pairings << [p.users.first.meetup_uid, p.users.second.meetup_uid]
+        end
       end
       respond_to do |format|
         format.json   { render :json => {:event => @event.as_json(:only => [:meetup_id]), :pairings => @pairings }}

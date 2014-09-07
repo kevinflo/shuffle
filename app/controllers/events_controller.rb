@@ -13,9 +13,7 @@ class EventsController < ApplicationController
   def show
     response.headers["Last-Modified"] = Time.now.httpdate
     if user_signed_in?
-      if Time.now - current_user.updated_at >= 3600
-        current_user.token_refresh
-      end
+      current_user.token_refresh
       @dashboard = current_user.dashboard
       @ongoing_event = @dashboard["ongoing_event"]
       #if @ongoing_event != nil

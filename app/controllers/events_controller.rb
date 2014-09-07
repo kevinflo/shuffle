@@ -29,8 +29,8 @@ class EventsController < ApplicationController
 
   def mix
     if user_signed_in?
-      @event = Event.find_or_create_by(params[:meetup_id])
-      if !current_user.in?(@event)
+      @event = Event.find_or_create_by(meetup_id: params[:meetup_id])
+      if !current_user.in?(@event.users)
         @event.users.push(current_user)
       end
       respond_to do |format|
@@ -48,4 +48,5 @@ class EventsController < ApplicationController
     @event.batchify
     redirect_to events_mix_path(@event.meetup_id)
   end
+
 end

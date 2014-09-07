@@ -1,3 +1,13 @@
 .navbar {
     border-radius: 0px;
 }
+
+#event-list {
+    .event {
+        cursor: pointer;
+
+        .event-status > i {
+            font-size: 60px;
+        }
+    }
+}

@@ -1,10 +1,14 @@
 <div id="event-list">
   <h2>Your Events</h2>
-  <ul>
-    <li ng-repeat="event in events" ui-sref="looking({eventid: event.id})">
-      <h4>{{event.name}}</h4>
-      <span class="upcoming" ng-if="event.status === 'upcoming'"><i></i></span>
-      <span>{{event.time | date:"MM/dd @ h:mma"}}</span>
+  <ul class="list-group" class="events">
+    <li class="list-group-item event clearfix" ng-repeat="event in events" ui-sref="looking({eventid: event.id})">
+      <div class="pull-left">
+        <h4>{{event.name}}</h4>
+        <span>{{event.time | date:"MM/dd @ h:mma"}}</span>
+      </div>
+      <div class="pull-right">
+        <span class="event-status upcoming" ng-if="event.status === 'upcoming'"><i class="fa fa-check-circle"></i></span>
+      </div>
     </li>
   </ul>
 </div>

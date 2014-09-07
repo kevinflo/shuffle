@@ -1,11 +1,11 @@
 <div ng-include="'assets/src/app/header/header.html'" ng-controller="HeaderCtrl"></div>
 
-<div ui-view></div>
+<div class="page container" ui-view></div>
 
 <% if user_signed_in? %>
 <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
+<script>window.sm_current_user = <%=raw @current_user %></script>
 <% else %>
 <%= link_to "Sign in with meetup", user_omniauth_authorize_path(:meetup) %>
 <% end %>
 
-<script>window.sm_current_user = <%=raw @current_user %></script>

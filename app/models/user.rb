@@ -13,36 +13,21 @@ class User < ActiveRecord::Base
     false
   end
 
-
-  # def self.find_for_meetup_oauth(auth, signed_in_resource=nil)
-  #   if user = User.where(:meetup_uid => auth.uid).first
-  #     user.update_attributes(
-  #       meetup_description:auth.info.description,
-  #       meetup_image:auth.info.image,
-  #       meetup_location:auth.info.location,
-  #       meetup_name:auth.info.name,
-  #       meetup_photo_url:auth.info.photo_url)
-  #     user
-  #   else
-  #     user = User.create(meetup_uid:auth.uid,
-  #       meetup_description:auth.info.description,
-  #       meetup_image:auth.info.image,
-  #       meetup_location:auth.info.location,
-  #       meetup_name:auth.info.name,
-  #       meetup_photo_url:auth.info.photo_url,
-  #       password:Devise.friendly_token[0,20])
-  #     user
-  #   end
-  # end
-
   def self.find_for_meetup_oauth(auth)
     where(meetup_uid: auth.uid).first_or_create do |user|
       # user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.meetup_name = auth.info.name   # assuming the user model has a name
       user.meetup_image = auth.info.image # assuming the user model has an image
+      user.meetup_token = auth.credentials.token
+      user.meetup_refresh_token = auth.credentials.refresh_token
       user.save!
     end
+  end
+
+  def dashboard
+    dash = HTTParty.get("https://api.meetup.com/dashboard", :headers => { "Authorization" => "bearer #{self.meetup_token}"})
+    dash
   end
 
 end

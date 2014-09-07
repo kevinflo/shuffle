@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def update
+    current_user.update(email: params[:email], c_name: params[:name], c_short_description: params[:short_description], c_permalink: params[:permalink], c_homepage_url: params[:homepage_url])
+  end
+
   def csearch
     @query = params[:query]
 

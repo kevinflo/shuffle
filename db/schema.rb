@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140907083700) do
+ActiveRecord::Schema.define(version: 20140907131507) do
 
   create_table "batches", force: true do |t|
     t.integer  "event_id"
@@ -72,6 +72,10 @@ ActiveRecord::Schema.define(version: 20140907083700) do
     t.string   "meetup_token"
     t.string   "meetup_refresh_token"
     t.integer  "meetup_token_expires_at"
+    t.string   "c_name"
+    t.string   "c_short_description"
+    t.string   "c_permalink"
+    t.string   "c_homepage_url"
   end
 
   add_index "users", ["meetup_uid"], name: "index_users_on_meetup_uid", unique: true

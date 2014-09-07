@@ -30,4 +30,13 @@ class User < ActiveRecord::Base
     dash
   end
 
+  def token_refresh
+    fresh = HTTParty.post("https://secure.meetup.com/oauth2/access", :body => { "client_id" => Rails.application.secrets.meetup_oauth_key,
+"client_secret" => Rails.application.secrets.meetup_oauth_secret, 
+"grant_type" => "refresh_token",
+"refresh_token" => self.meetup_refresh_token }, :headers => { "Content-Type" => "application/x-www-form-urlencoded" })
+
+    self.update(meetup_refresh_token:fresh["refresh_token"], meetup_token:fresh["access_token"])
+  end
+
 end

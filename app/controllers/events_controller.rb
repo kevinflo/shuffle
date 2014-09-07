@@ -41,4 +41,11 @@ class EventsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def batchify
+    @event = Event.find_by(params[:meetup_id])
+
+    @event.batchify
+    redirect_to events_mix_path(@event.meetup_id)
+  end
 end

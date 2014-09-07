@@ -6,7 +6,7 @@ angular.module('sm.event', [
 
 .config(function config($stateProvider, $urlRouterProvider) {
   $stateProvider
-  .state('event.list', {
+  .state('event', {
     abstract: true,
     url: '/event',
     views: {
@@ -19,5 +19,4 @@ angular.module('sm.event', [
 })
 
 .controller('EventCtrl', function EventCtrl($scope, $state, $stateParams, $rootScope) {
-  $scope.match = $rootScope.match;
 });

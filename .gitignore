@@ -30,3 +30,5 @@
 /notes.rb
 
 bower_components
+
+*.swp

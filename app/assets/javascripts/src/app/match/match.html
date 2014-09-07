@@ -1,7 +1,7 @@
 <div id="match">
-  <div>Meet and Greet</div>
+  <div><h3>Meet and Greet</h3></div>
 
-  <div class="match-name">Find {{other.name}}</div>
+  <div class="match-name"><h2>Find {{other.name}}</h2></div>
   <img class="match-image" ng-src="{{other.image}}"/>
 
   <div class="match-actions">
@@ -10,8 +10,9 @@
     <button type="button" class="btn btn-primary btn-block match-share">Share Contact</button>
   </div>
 
-  <div class="match-timer">
+  <div class="match-timertwo">
     <span>Next MeetupShuffle starts in </span>
     <timer end-time="nextMatchTime">{{mminutes}}:{{sseconds}}</timer>
   </div>
+
 </div>

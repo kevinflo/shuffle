@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def switchify
+    response.headers["Last-Modified"] = Time.now.httpdate
     @event = Event.find_by(meetup_id: params[:meetup_id])
 
     @switch = @event.switchify
@@ -10,6 +11,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    response.headers["Last-Modified"] = Time.now.httpdate
     if user_signed_in?
       if Time.now - current_user.updated_at >= 3600
         current_user.token_refresh
@@ -38,6 +40,7 @@ class EventsController < ApplicationController
   end
 
   def mix
+    response.headers["Last-Modified"] = Time.now.httpdate
     if user_signed_in?
       @event = Event.find_or_create_by(meetup_id: params[:meetup_id])
       if !current_user.in?(@event.users)

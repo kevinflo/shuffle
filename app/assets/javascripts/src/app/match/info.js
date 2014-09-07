@@ -7,7 +7,7 @@ angular.module('sm.match.info', [
   .state('match.info', {
     url: '/info',
     views: {
-      "": {
+      "info": {
         controller: 'MatchInfoCtrl',
         templateUrl: 'assets/src/app/match/info.html'
       }

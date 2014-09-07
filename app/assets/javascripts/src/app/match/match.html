@@ -1,18 +1,21 @@
 <div id="match">
+  <a class="btn btn-danger match-skip" href="#/match/56721352"><i class="fa fa-angle-double-right"></i></a>
   <div class="match-name"><h2>Find {{match.meetup_name}}</h2></div>
   <!--<div class="match-image" profile-image="{{match.meetup_image}}"></div>-->
   <img class="match-image" ng-src="{{match.meetup_image}}"/>
   <!--<div class="match-description"><h4>{{match.meetup_description}}</h4></div>-->
 
-  <div class="match-actions">
-    <button type="button" class="btn btn-info btn-block match-info" ui-sref=".info">Info</button>
-    <button type="button" class="btn btn-default btn-block match-message">Message</button>
-    <button type="button" class="btn btn-primary btn-block match-share">Share Contact</button>
-  </div>
+  <div ui-view="info">
+    <div class="match-actions">
+      <button type="button" class="btn btn-info btn-block match-info" ui-sref=".info">Info</button>
+      <button type="button" class="btn btn-default btn-block match-message">Message</button>
+      <button type="button" class="btn btn-primary btn-block match-share">Share Contact</button>
+    </div>
 
-  <div class="match-timertwo">
-    <span>Next MeetupShuffle starts in </span>
-    <timer end-time="nextMatchTime">{{mminutes}}:{{sseconds}}</timer>
+    <div class="match-timertwo">
+      <span>Next MeetupShuffle starts in </span>
+      <timer end-time="nextMatchTime">{{mminutes}}:{{sseconds}}</timer>
+    </div>
   </div>
 
 </div>

@@ -26,4 +26,16 @@ class EventsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def mix
+    if user_signed_in?
+      @event = Event.find_or_create_by(params[:meetup_id])
+      respond_to do |format|
+        format.json   { render :json => @event }
+      end
+    else
+      flash[:error] = "Sorry, you must be logged in to an account to access this page."
+      redirect_to root_path
+    end
+  end
 end

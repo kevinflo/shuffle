@@ -11,7 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140907030715) do
+ActiveRecord::Schema.define(version: 20140907083700) do
+
+  create_table "batches", force: true do |t|
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "batches", ["event_id"], name: "index_batches_on_event_id"
+
+  create_table "events", force: true do |t|
+    t.string   "meetup_id"
+    t.integer  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events_users", force: true do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+  end
+
+  add_index "events_users", ["event_id"], name: "index_events_users_on_event_id"
+  add_index "events_users", ["user_id"], name: "index_events_users_on_user_id"
+
+  create_table "pairings", force: true do |t|
+    t.integer  "batch_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pairings_users", force: true do |t|
+    t.integer "user_id"
+    t.integer "pairing_id"
+  end
+
+  add_index "pairings_users", ["pairing_id"], name: "index_pairings_users_on_pairing_id"
+  add_index "pairings_users", ["user_id"], name: "index_pairings_users_on_user_id"
 
   create_table "users", force: true do |t|
     t.integer  "meetup_uid"
@@ -39,5 +76,13 @@ ActiveRecord::Schema.define(version: 20140907030715) do
 
   add_index "users", ["meetup_uid"], name: "index_users_on_meetup_uid", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token"
+
+  create_table "users_pairings", force: true do |t|
+    t.integer "user_id"
+    t.integer "pairing_id"
+  end
+
+  add_index "users_pairings", ["pairing_id"], name: "index_users_pairings_on_pairing_id"
+  add_index "users_pairings", ["user_id"], name: "index_users_pairings_on_user_id"
 
 end

@@ -5,24 +5,24 @@ angular.module('sm.looking', [
 .config(function config($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('looking', {
-    url: '/looking',
+    url: '/looking/{eventid:[0-9]+}',
     resolve: {
-      matches: function(MatchesModel) {
-        return MatchesModel.get();
+      matches: function() {
+        //return MatchesModel.get();
       }
     },
     views: {
       "": {
         controller: 'LookingCtrl',
-        templateUrl: 'looking/looking.html'
+        templateUrl: 'assets/src/app/looking/looking.html'
       }
     }
   });
 })
 
 .controller('LookingCtrl', function LookingCtrl($scope, $state, matches, $rootScope) {
-  var match = _.find(matches, { person: { id: $rootScope.currentUser.id }});
-  $rootScope.match = match;
+  //var match = _.find(matches, { person: { id: $rootScope.currentUser.id }});
+  //$rootScope.match = match;
   
-  $state.go('match', { match: match });
+  //$state.go('match', { match: match });
 });

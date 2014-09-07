@@ -4,17 +4,29 @@ angular.module('sm.event.list', [
 
 .config(function config($stateProvider, $urlRouterProvider) {
   $stateProvider
-  .state('event.list', {
+  .state('eventlist', {
     url: '/',
+    resolve: {
+      events: function($http) {
+        return $http.get('/events.json')
+        .then(function(data) {
+          return data.data;
+        });
+      }
+    },
     views: {
       "": {
         controller: 'EventListCtrl',
-        templateUrl: 'event/list/event-list.html'
+        templateUrl: 'assets/src/app/event/list/event-list.html'
       }
     }
   });
 })
 
-.controller('EventListCtrl', function EventListCtrl($scope, $state, $stateParams, $rootScope) {
-  $scope.match = $rootScope.match;
+.controller('EventListCtrl', function EventListCtrl($scope, $state, $stateParams, $rootScope, events) {
+  if (!angular.isArray(events)) {
+    events = [events];
+  }
+
+  $scope.events = events;
 });

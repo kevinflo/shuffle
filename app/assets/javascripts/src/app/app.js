@@ -14,7 +14,6 @@ angular.module('sm', [
 ])
 
 .config(function shuffleAppConfig($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.when('/', '/event/');
   $urlRouterProvider.otherwise('/');
 })
 
@@ -35,4 +34,23 @@ angular.module('sm', [
       });
     });
   };
+})
+
+.run(function($rootScope) {
+  /* This should only be here on dev */
+  $rootScope.$on('$stateChangeError', 
+  function(event, toState, toParams, fromState, fromParams, error){
+    console.error(arguments);
+  });
+
+  $rootScope.$on('$stateChangeSuccess', 
+  function(event, toState, toParams, fromState, fromParams) {
+    console.group("Changing state to:", toState.name);
+    console.log('toState:', toState);
+    console.log('toParams:', toParams);
+    console.log('fromState:', fromState);
+    console.log('fromParams:', fromParams);
+    console.groupEnd();
+  });
+
 });

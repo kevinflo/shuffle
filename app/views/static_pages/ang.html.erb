@@ -1,8 +1,6 @@
-<div ng-app="sm">
-  <div ng-include="'assets/src/app/header/header.html'" ng-controller="HeaderCtrl"></div>
+<div ng-include="'assets/src/app/header/header.html'" ng-controller="HeaderCtrl"></div>
 
-  <div ui-view></div>
-</div>
+<div ui-view></div>
 
 <% if user_signed_in? %>
 <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>

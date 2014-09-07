@@ -4,10 +4,9 @@ angular.module('sm', [
   'ui.router',
   'ui.bootstrap',
   'ngAnimate',
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngTouch',
+  //'ngResource',
+  //'ngSanitize',
+  //'ngTouch',
 
   'sm.event',
   'sm.match',
@@ -19,6 +18,11 @@ angular.module('sm', [
 })
 
 .controller('AppCtrl', function AppCtrl($rootScope) {
+  $rootScope.currentUser = window.sm_current_user;
+})
+
+.controller('HeaderCtrl', function HeaderCtrl() {
+
 })
 
 .directive('profileImage', function(){

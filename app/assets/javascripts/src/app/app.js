@@ -7,6 +7,7 @@ angular.module('sm', [
   //'ngResource',
   //'ngSanitize',
   //'ngTouch',
+  'timer',
 
   'sm.event',
   'sm.match',

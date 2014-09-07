@@ -16,5 +16,5 @@ angular.module('sm.event.detail', [
 })
 
 .controller('EventDetailCtrl', function EventDetailCtrl($scope, $state, $stateParams, $rootScope) {
-  $scope.match = $rootScope.match;
+  //$scope.match = $rootScope.match;
 });

@@ -8,8 +8,13 @@ Rails.application.routes.draw do
   match '/events/:meetup_id' => 'events#mix', via: :get, as: :events_mix
   match '/events/:meetup_id/batchify' => 'events#batchify', via: :get, as: :events_batchify
   match '/users/:meetup_uid' => 'users#show', via: :get
+  match '/events/:meetup_id/switchify' => 'events#switchify', via: :get, as: :events_switchify
 
   devise_for :users, :skip => [:registrations], :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  match '/csearch/:query' => 'users#csearch', via: :get, as: :csearch
+  match '/users/update' => 'users#update', via: :post
+  match '/pairings' => 'users#pairings', via: :get
 
   # devise_scope :user do
   #   get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session

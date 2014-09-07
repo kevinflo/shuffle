@@ -34,6 +34,7 @@ gem 'bootstrap-sass', '3.2.0.2'
 gem 'devise', '3.3.0'
 gem 'omniauth-meetup', '0.0.7'
 gem 'meetup_client', '0.0.6'
+gem 'crunchbase', '~> 0.4.0'
 
 group :production do
   gem 'rails_12factor', '0.0.2'

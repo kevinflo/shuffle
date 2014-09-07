@@ -29,23 +29,30 @@ class EventsController < ApplicationController
 
   def mix
     if user_signed_in?
-      @event = Event.find_or_create_by(params[:meetup_id])
-      if !current_user.in?(@event)
+      @event = Event.find_or_create_by(meetup_id: params[:meetup_id])
+      if !current_user.in?(@event.users)
         @event.users.push(current_user)
       end
+      if @event.batches.count == 0
+        @event.batchify
+      end
+
+      @pairings = []
+      @event.batches.last.pairings.each do |p|
+        @pairings << [p.users.first.meetup_uid, p.users.second.meetup_uid]
+      end
       respond_to do |format|
-        format.json   { render :json => @event }
+        format.json   { render :json => {:event => @event.as_json(:only => [:meetup_id]), :pairings => @pairings }}
       end
     else
       flash[:error] = "Sorry, you must be logged in to an account to access this page."
-      redirect_to root_path
     end
   end
 
   def batchify
-    @event = Event.find_by(params[:meetup_id])
+    @event = Event.find_by(meetup_id: params[:meetup_id])
 
     @event.batchify
-    redirect_to events_mix_path(@event.meetup_id)
+    # redirect_to events_mix_path(@event.meetup_id)
   end
 end

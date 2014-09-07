@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   devise_for :users, :skip => [:registrations], :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   match '/csearch/:query' => 'users#csearch', via: :get, as: :csearch
-  match '/user/update' => 'users#update', via: :post
+  match '/users/update' => 'users#update', via: :post
 
   # devise_scope :user do
   #   get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session

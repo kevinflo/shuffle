@@ -1,6 +1,12 @@
 class EventsController < ApplicationController
   def switchify
-    
+    @event = Event.find_by(meetup_id: params[:meetup_id])
+
+    @switch = @event.switchify
+
+    respond_to do |format|
+      format.json { render :json => { "switch" => @switch }}
+    end
   end
 
   def show

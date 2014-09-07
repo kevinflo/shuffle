@@ -3,7 +3,12 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :users
 
   def switchify
-    
+    if self.active == nil
+      self.update(active: 1)
+      return 0
+    else
+      return 1
+    end
   end
 
   # shield your eyes... the following is horrifying
